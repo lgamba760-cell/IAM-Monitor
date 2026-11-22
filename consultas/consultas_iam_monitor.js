@@ -34,7 +34,7 @@ db.auditoria_accesos.find().limit(10).toArray();
 // 2. CONSULTAS CON FILTROS
 // =======================================================
 
-// Buscar cuentas del departamento de Tecnologia
+// Buscar cuentas del departamento de Operaciones
 db.cuentas.find({ departamento: "Operaciones"}).toArray();
 
 // Buscar cuentas con cargo de Administrador
@@ -138,3 +138,20 @@ db.cuentas.findOne({
 // Las referencias permiten relacionar cuentas, aplicaciones y roles mediante sus identificadores.
 
 db.asignaciones_acceso.findOne();
+
+// =======================================================
+// 7. RELACION ENTRE COLECCIONES - JOIN CON $LOOKUP
+// =======================================================
+// Relacionar las asignaciones de acceso con la informacion
+// mediante el identificador ObjectId de cada cuenta.
+
+db.asignaciones_acceso.aggregate([
+  {
+    $lookup: {
+      from: "cuentas",
+      localField: "cuenta_id",
+      foreignField: "_id",
+      as: "informacion_cuenta"
+    }
+  }
+]).toArray();
