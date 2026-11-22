@@ -63,7 +63,7 @@ IAM Monitor es un ejercicio académico de modelado y consulta de datos. No se en
 
 ## 8. Autora
 
-Angie Lizeth Baron
+Angie Baron
 
 Proyecto académico – Curso de Big Data  
 Universidad Nacional Abierta y a Distancia (UNAD).
