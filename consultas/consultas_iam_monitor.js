@@ -35,35 +35,27 @@ db.auditoria_accesos.find().limit(10).toArray();
 // =======================================================
 
 // Buscar cuentas del departamento de Tecnologia
-db.cuentas.find({
-  departamento: "Tecnología"
-}).toArray();
+db.cuentas.find({ departamento: "Operaciones"}).toArray();
 
 // Buscar cuentas con cargo de Administrador
-db.cuentas.find({
-  cargo: "Administrador"
-}).toArray();
+db.cuentas.find({ cargo: "Administrador"}).toArray();
 
 // Consultar aplicaciones activas
-db.aplicaciones.find({
-  estado: "Activo"
-}).toArray();
+db.aplicaciones.find({ estado: "Activo"}).toArray();
 
 // Consultar una cuenta especifica
-db.cuentas.findOne({
-  nombre: "Usuario 1"
-});
+db.cuentas.findOne({ nombre: "Usuario 1"});
 
 // =======================================================
 // 3. CONTEOS Y AGREGACIONES
 // =======================================================
 
 // Contar documentos de cada coleccion
-db.cuentas.countDocuments();
-db.roles.countDocuments();
-db.aplicaciones.countDocuments();
-db.asignaciones_acceso.countDocuments();
-db.auditoria_accesos.countDocuments();
+print("CUENTAS: " + db.cuentas.countDocuments());
+print("ROLES: " + db.roles.countDocuments());
+print("APLICACIONES: " + db.aplicaciones.countDocuments());
+print("ASIGNACIONES: " + db.asignaciones_acceso.countDocuments());
+print("AUDITORIA: " + db.auditoria_accesos.countDocuments());
 
 // Agrupar cuentas por estado
 db.cuentas.aggregate([
@@ -130,25 +122,13 @@ db.cuentas.findOne({
 // =======================================================
 // 5. ELIMINACION DE UN REGISTRO DE PRUEBA
 // =======================================================
-// Ejemplo ejecutado: insertar y eliminar un registro temporal para comprobar la operacion deleteOne.
-// Lo dejo comentado para evitar eliminar datos accidentalmente al ejecutar este archivo.
-
-// db.cuentas.insertOne({
-//   nombre: "Usuario_Prueba_Eliminar",
-//   correo: "prueba.eliminar@empresa-demo.com",
-//   departamento: "Pruebas",
-//   cargo: "Temporal",
-//   estado: "Activo",
-//   fecha_creacion: new Date()
-// });
-
 // db.cuentas.deleteOne({
-//   nombre: "Usuario_Prueba_Eliminar"
+//   nombre: "Usuario 10"
 // });
 
 // Verificar que el registro no exista
 db.cuentas.findOne({
-  nombre: "Usuario_Prueba_Eliminar"
+  nombre: "Usuario 10"
 });
 
 // =======================================================
